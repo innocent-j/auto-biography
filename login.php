@@ -7,26 +7,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
 
     // Prepare SQL statement
-    $stmt = $conn->prepare("SELECT id, first_name, last_name, age, username, password, address FROM users WHERE username = ?");
+    $stmt = $conn->prepare("SELECT id, first_name, last_name, name_suffix, username, password, age, address, image_profile FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        $stmt->bind_result($id, $first_name, $last_name, $age, $db_username, $db_password, $address);
+        $stmt->bind_result($id, $first_name, $last_name, $name_suffix, $db_username, $db_password, $age, $address, $image_profile);
         $stmt->fetch();
 
-        // Compare the plain-text password directly
         if ($password === $db_password) {
             // Store all relevant details in the session
             $_SESSION['id'] = $id;
             $_SESSION['first_name'] = $first_name;
             $_SESSION['last_name'] = $last_name;
+            $_SESSION['name_suffix'] = $name_suffix;
+            $_SESSION['username'] = $username;  
             $_SESSION['age'] = $age;
             $_SESSION['address'] = $address;
-            $_SESSION['username'] = $username;  // Make sure the username is also stored
+            $_SESSION['image_profile'] = $image_profile;
 
-            // Redirect to card.php
             header("Location: card.php");
             exit();
         } else {
