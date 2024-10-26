@@ -30,10 +30,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: card.php");
             exit();
         } else {
-            echo "Invalid password.";
+            header("Location: index.php?password_error=Invalid%20password");
+            exit();
         }
     } else {
-        echo "Username not found.";
+        header("Location: index.php?username_error=Username%20not%20found");
+        exit();
     }
 
     $stmt->close();

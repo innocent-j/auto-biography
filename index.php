@@ -58,7 +58,10 @@
           class="input_field"
           id="email_field"
           required />
-      </div>
+        </div>
+        <?php if (isset($_GET['username_error'])) { ?>
+          <p style="color: red; font-size: 12px; padding: 0; margin: 0; width: 100%; display: block; text-align: left;"><?php echo htmlspecialchars($_GET['username_error']); ?></p>
+        <?php } ?>
       <div class="input_container">
         <label class="input_label" for="password_field">Password</label>
         <svg
@@ -91,6 +94,9 @@
           id="password_field"
           required />
       </div>
+      <?php if (isset($_GET['password_error'])) { ?>
+          <p style="color: red; font-size: 12px; padding: 0; margin: 0; width: 100%; display: block; text-align: left;"><?php echo htmlspecialchars($_GET['password_error']); ?></p>
+      <?php } ?>
       <button title="Sign In" type="submit" class="sign-in_btn">
         <span>Sign In</span>
       </button>
