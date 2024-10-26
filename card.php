@@ -83,7 +83,7 @@ if (!isset($_SESSION['id'])) {
           @ <?php echo $_SESSION['address']; ?>
           <br>
           <br>
-        <span>Life’s busy, but there’s always time for good friends, good vibes, and a coffee to get through the late nights. Here’s to the next chapter—making the most of every moment, staying true, and keeping that ambition high. 📚💪 #CollegeLife #OnTheGrind #GoodVibesOnly</span>
+        <span>Hey there! I’m just a college student learning my way around web development—PHP, to be exact. It’s a whole new world, but I’m up for the challenge. 📚💪 #CollegeLife #OnTheGrind #GoodVibesOnly</span>
         </p>
       </div>
     </div>
